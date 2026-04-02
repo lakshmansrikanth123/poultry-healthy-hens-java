@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: myapp-container
-        image: myimage/varsha0411:v1
+        image: varsha0411/srikanthfullflow:v1
         ports:
         - containerPort: 8080
 
