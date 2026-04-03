@@ -52,7 +52,7 @@ stage('Download WAR') {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t varsha0411/srikanthfullflow:v2 .'
+                sh 'docker build --no-cache -t $IMAGE_NAME:$IMAGE_TAG .'
             }
         }
 		stage('Login to Docker Hub') {
