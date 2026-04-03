@@ -53,7 +53,9 @@ stage('Download WAR') {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build --no-cache -t varsha0411/srik:latest .'
+                 sh """
+docker build --no-cache --build-arg WAR_FILE=healthy-hens-${BUILD_NUMBER}.war -t varsha0411/srik:latest .
+"""
             }
         }
 		stage('Login to Docker Hub') {
