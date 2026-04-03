@@ -42,9 +42,9 @@ stage('Download WAR') {
         usernameVariable: 'NEXUS_USER',
         passwordVariable: 'NEXUS_PASS'
     )]) {
-        sh '''
+       sh '''
         wget --user=$NEXUS_USER --password=$NEXUS_PASS \
-        http://34.227.197.244:8081/repository/maven-releases/com/poultry/healthy-hens/1.0/healthy-hens-1.0.war
+        http://34.227.197.244:8081/repository/maven-releases/com/poultry/healthy-hens/1.0.${BUILD_NUMBER}/healthy-hens-1.0.${BUILD_NUMBER}.war
         '''
 		
     }
