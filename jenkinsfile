@@ -76,13 +76,14 @@ docker build --no-cache --build-arg WAR_FILE=healthy-hens-1.0.${BUILD_NUMBER}.wa
             }
         }
 		        stage('K8s Deployment') {
-            steps {
-              withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
-                sh '''
-                export KUBECONFIG=$KUBECONFIG
-                kubectl get nodes
-                kubectl apply -f fulldep.yml
-                '''
+    steps {
+        withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
+            sh """
+            export KUBECONFIG=$KUBECONFIG
+            kubectl get nodes
+            kubectl apply -f fulldep.yml
+            kubectl rollout restart deployment myapp-deployment
+            """
         }
     }
 }
